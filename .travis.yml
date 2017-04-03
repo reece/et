@@ -1,0 +1,26 @@
+dist: trusty
+sudo: required
+
+language: python
+python:
+- '2.7'
+- '3.5'
+cache: pip
+
+before_install: 
+install: pip install tox-travis
+
+script: make tox
+
+deploy:
+  provider: pypi
+  user: reece
+  skip_upload_docs: true
+  skip_cleanup: true
+  distributions: "sdist bdist_egg bdist_wheel"
+  on:
+    tags: true
+    repo: reece/helix
+    branch: master
+  password:
+    secure: HqONXiU9e2z0aWUsGlKm4+ufv1Az+llcwBfNpwxF28suOWYmIjKjlWOcUALx/CdeuuWc6brkiqKMdBDviM/KOY59zqk/On/8LAbDN0o4vw7CcpwWRVbq7Wjyj+kVccb1qrNUiviCLTwOe4eIhFfE1aVrAkLyOvh/ZX/UUgjinqyzRrLnRbN92nVL6q/yU3be2CGNOt5qaGTht+uu3xPsMwPQ5fr8lTy1ZQprgrpFU8XdWWqBxopmbVJCumaswKLqKpIJqkg5vVfGCFO5z9+vINcLUP6gzjwHjbEZ0rLIWMibZ3/E+E6gscJyPvG+Rx7wG3IQPBuzSVP/t/xxTxLSwfcQwD9/xJPQB2DX/bsoVOPJXbnvu9aMlDpUiIA1yLq3D0t9rP/Yhsw2l27s9g1bRBXmC5MoBOFFGHU+de9WPlMt2jx9qUHpantOsSqSqPB51TCtsgKztRlYV+b5+dvuYrPXyS9EXaKNX9LHi3xw3fx4ycixQ8n2IHqqRDH1U1b9xXl3HgbQ2c7fxGVDQemrp3VEsOYKqZfSluELarYfn6V/LDwGXIArHHt6a+5Xm1EDuBnbvmj9iwZOyEDr7OUxBd4sL9HNHSJxuYSUEK7/L4eJIEOCnzW6Ty1LHCDQhrC1+vMNrMtw5bFHfd5ChpYJ/2lGP2G93zzhKbGnCstdahA=
