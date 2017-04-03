@@ -1,0 +1,2 @@
+# et
+Simple package to phone home by sending and receiving arbitrary dictionaries via UDP 
